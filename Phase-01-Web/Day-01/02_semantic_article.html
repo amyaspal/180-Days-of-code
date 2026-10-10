@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Semantic Content Architecture | Yashpal Singh</title>
+    </head>
+    <body>
+
+        <!-- Page Header -->
+         <header>
+        <h1>Computer Science &amp; System Architecture</h1>
+        <p>Authored by <strong>Yashpal Singh</strong> . Student at <abbr title="Raja Mahendra Pratap Singh State University">RMPSSU</abbr>, Aligarh</p>
+        <nav>
+            <a href="#compilation">Compilation Stages</a> |
+            <a href="#shortcuts">VS Code Shortcuts</a> |
+            <a href="#definitions">Core CS Terminology</a>
+        </nav>
+    </header>
+
+    <hr>
+
+    <!-- Main Technical Content -->
+     <main>
+        <!-- Section 1: The C Compilation Pipeline-->
+         <section id="compilation">
+            <h2>1. The Four Stages of C Compilation</h2>
+            <p>
+                In low-level software engineering, source code is converted to binary machine instructions through four discrets stages:
+            </p>
+
+            <ol>
+                <li>
+                    <strong>Preprocessing:</strong> Header expansion, macro substitution.
+                    <br>Command: <code>gcc -E main.c -o main.i</code>
+                    </li>
+                    <li>
+                        <strong>Compilation:</strong> Translation of preprocessed C code into assembly language.
+                        <br>Command: <code>gcc -S main.i -o main.s</code>
+                    </li>
+                    <li>
+                        <strong>Assembly:</strong> Converts assembly instructions into machine-level object code.
+                        <br>Command: <code>gcc -c main.s -o main.o</code>
+                        </li>
+                    <li>
+                        <strong>Linking:</strong> Links object code with system libraries to produce the final executable binary.
+                        <br>Command: <code>gcc main.o -o main.exe</code>
+                        </li>
+                        </ol>
+                        <h3>Code Architecture Demonstration</h3>
+                        <pre><code>#include &lt;stdio.h&gt;
+
+int main(void) {
+    //Standard I/O output stream
+    printf("Memory address allocation verified.\\n
+    return 0;
+}</code></pre>
+
+<p>Terminal Output observed after execution :</p>
+<samp>Memory address allocation verified.</samp>
+         </section>
+         
+         <hr>
+
+<!-- Section 2: Developer Shortcuts-->
+            <section id="shortcuts">
+                <h2>2. Essential Developer Shortcuts in VS Code</h2>
+                <p>
+                    Keyboard combinations required for rapid, efficient editing:
+                    </p>
+                    <ul>
+                        <li>Toggle Integrated Terminal: <kbd>Ctrl</kbd> + <kbd>`</kbd></li>
+                        <li>Open Command Palette: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd></li>
+                        <li>Format Document (Prettier): <kbd>Shift</kbd> + <kbd>Alt</kbd> + <kbd>F</kbd></li>
+                        <li>Save All Open Files: <kbd>Ctrl</kbd> + <kbd>K</kbd> followed by <kbd>S</kbd></li>
+                        </ul>
+                        </section>
+
+                        <hr>
+
+                        <!-- Section 3: Definitions Lists (Glossary)-->
+                         <section id="definitions">
+                            <h2>3. Core Computer Science Glossary</h2>
+                            <dl>
+                                <dt><strong>DOM (Document Object Model)</strong></dt>
+                                <dd>The in-memory hierarchical tree representation of an HTML document constructed by the browser.</dd>
+
+                                <dt><strong>JVM (Java Virtual Machine)</strong></dt>
+                                <dd>The abstract runtime engine executing Java bytecode, enabling cross-platform portability.</dd>
+
+                                <dt><strong>ACID Guarantees</strong></dt>
+                                <dd>Atomicity, Consistency, Isolation, and Durability—the four fundamental pillars of relational database transactions.</dd>
+                            </dl>
+                        </section>
+                    </main>
+
+                    <hr>
+
+                    <!-- Page Footer -->
+                     <footer>
+                        <address>
+                            Contact Author: <a href="mailto:am.yaspal@gmail.com">am.yaspal@gmail.com</a>
+                            Github: <a href="https://github.com/amyaspal" target="_blank" rel="noopener noreferrer">github.com/amyaspal</a>
+                        </address>
+                        <p><small>&copy; 2026 Yashpal Singh • Day 1 Semantic Mastery</small></p>
+                     </footer>
+
+                     </body>
+                     </html>
+                     
