@@ -9,7 +9,7 @@
 
 ## 📊 180-Day Phase Tracker
 
-- [ ] **Phase 1: Web Frontend & JavaScript (Days 1–30)** `[ 1 / 30 Days ]` ⏳ In Progress
+- [ ] **Phase 1: Web Frontend & JavaScript (Days 1–30)** `[ 1 / 30 Days Completed ]` ⏳ In Progress
 - [ ] **Phase 2: C Programming & Low-Level Memory (Days 31–60)** `[ 0 / 30 Days ]`
 - [ ] **Phase 3: C++ & Data Structures and Algorithms (Days 61–90)** `[ 0 / 30 Days ]`
 - [ ] **Phase 4: Core Java & OOPs Architecture (Days 91–120)** `[ 0 / 30 Days ]`
@@ -21,8 +21,13 @@
 ## 📅 Daily Execution Log
 
 ### 🌐 Phase 1: Web Frontend & Git Foundations
-- [x] **Day 01:** [Semantic HTML5 & Multi-Page Architecture](./Phase-01-Web/Day-01/) — Complete 3-hour lab covering head metadata, OpenGraph tags, semantic structuring, and relative path routing.
-- [ ] **Day 02:** Text Hierarchy, Typography & Code Blocks
+- [x] **Day 01 (Completed ✅):** [Semantic HTML5 & Multi-Page Architecture](./Phase-01-Web/Day-01/)
+  - *Labs Covered:* Head metadata engine, OpenGraph social cards, semantic technical article, relative directory routing (`../`), lazy loading figures.
+  - *Commits:* Successfully logged and pushed to GitHub.
+
+- [ ] **Day 02 (Current ⏳):** [Forms, Validations & Tabular Architecture](./Phase-01-Web/Day-02/)
+  - *Focus:* Multi-section university registration forms, accessible controls, constraints, regex pattern validation, and complex marksheet tables using `colspan`/`rowspan`.
+
 - [ ] **Day 03:** Hyperlinks, Absolute vs Relative Paths & Media Assets
 - [ ] **Day 04:** HTML Tables & Tabular Marksheets
 - [ ] **Day 05:** HTML Forms, Labels & Input Types
