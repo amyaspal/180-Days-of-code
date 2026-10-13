@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 3: Advanced Navigation &amp; Protocols | Yashpal Singh</title>
+    </head>
+    <body id="top">
+
+        <header>
+            <h1>Advanced Hyperlink Routing &amp; Protocols</h1>
+            <p>Mastering anchor jumps, downloadable assets, security attributes, and device protocols.</p>
+
+            <!-- Table of Contents (In-Page Links) -->
+             <nav>
+                <strong>Quick Navigation:</strong>
+                <a href="#protocols">Device Protocols</a>
+                <a href="#downloads">Downloadable Assets</a>
+                <a href="#security">Link Security</a>
+                <a href="#bottom">jump to footer</a>
+             </nav>
+        </header>
+
+        <hr>
+
+        <main>
+
+            <!-- Section 1: Protocols -->
+                <section id="protocols">
+                    <h2>1. Custom Protocol Schemes</h2>
+                    <p>Hyperlinks can interest directly with system applications on mobile and desktop:</p>
+
+                    <ul>
+                        <li>
+                            <strong>Direct Email (with prefilled subject)</strong><br>
+                            <a href="mailto:am.yaspal@gmail.com?subject=Inquiry%20regarding%20180%20Days%20of%20Code&body=Hello%20Yashpal,">Send Pre-formatted Email</a>
+                        </li>
+                        <br>
+                        <li>
+                            <strong>Telephone Protocol (Direct Dial):</strong><br>
+                            <a href="tel:+919876543210">Call +91 98765 43210</a>
+                        </li>
+                        <br>
+                        <li>
+                            <strong>SMS Protocol (Direct Message):</strong><br>
+                            <a href="sms:+919876543210?body=Hello%20from%20Portfolio">Send SMS Message</a>
+                        </li>
+                    </ul>
+                </section>
+
+                <hr>
+
+                <!-- Section 2: Download Attribute -->
+                 <section id="downloads">
+                    <h2>2. Downloadable File Assets</h2>
+                    <p>Using the HTML5 <code>download</code> attribute forces files to save locally rather than opening in-browser:</p>
+
+                    <p>
+                        <!-- Mock Download Link -->
+                         <a href="https://raw.githubusercontent.com/amyaspal/180-days-of-code/main/README.md" download="Yashpal_180Days_Roadmap.md">
+                            📥 Download 180-Days Master Roadmap (.md file)
+                         </a>
+                    </p>
+                 </section>
+
+                 <hr>
+
+                 <!-- Section 3. External Link & Security -->
+                  <section id="Security">
+                    <h2>3. External Link Isolation &amp; Tab Control</h2>
+                    <p>
+                        Always combine <code>target="_blank"</code> with <code>rel="noopener noreferrer"</code> to prevent reverse-tabnabbing vunerabilities:
+                    </p>
+
+                    <p>
+                        <a href="https://github.com/amyaspal" target="_blank" rel="noopener noreferrer">
+                            Visit Github Profile (amyaspal) &rarr;
+                        </a>
+                    </p>
+                  </section>
+
+                  <!-- Space filler to test in-pagw scrolling -->
+                   <div style="height: 350px; background-color: #f6f8fa; padding: 20px; border: 1px; dashed #d0d7de;">
+                    <p><em>(Scroll testing block - verifies in-page jump nevigation)</em></p>
+                   </div>
+
+        </main>
+
+        <hr>
+
+        <footer id="bottom">
+            <p>
+                <a href="#top">&uarr; Back to Top of Page</a>
+            </p>
+            <p><small>&copy; 2026 Yashpal Singh • Navigation Architecture Lab</small></p>
+        </footer>
+
+    </body>
+</html>
