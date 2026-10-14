@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 4: Technical Specification Grid | Yashpal Singh</title>
+    </head>
+    <body>
+
+        <header>
+            <h1>Distributed Cloud Node &amp; Workstation Specification Sheed</h1>
+            <p>Comprehensive tabular modeling of hardware nodes, networking, and memory architecture.</p>
+        </header>
+
+        <hr>
+
+        <main>
+            <table>
+                <caption><strong>Cluster Hardware &amp; Local Workstation Baseline Specs</strong></caption>
+
+                <thead>
+                    <tr bgcolor="#24292f" style="color: ffffff;">
+                        <th scope="col" rowspan="2">Node ID</th>
+                        <th scope="col" rowspan="2">Role Architecture</th>
+                        <th scope="col" colspan="2">Compute Profile</th>
+                        <th scope="col" colspan="2">Storage</th>
+                        <th scope="col" rowspan="2">OS Runtime</th>
+                    </tr>
+                    <tr bgcolor="#32383f" style="color: ffffff;">
+                        <th scope="col">CPU Cores</th>
+                        <th scope="col">Clock Base</th>
+                        <th scope="col">Primert Memory</th>
+                        <th scope="col">NVMe SSD</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- Local Dev Machine-->
+                     <tr>
+                        <td align="center"><code>NODE-01</code></td>
+                        <td>Local Development Station</td>
+                        <td align="center">8 Cores / 16 Threads</td>
+                        <td align="center">3.20 Ghz</td>
+                        <td align="center">16 GB DDR4</td>
+                        <td align="center">512 GB</td>
+                        <td>Windows 11 + VS Code</td>
+                     </tr>
+
+                     <!-- Cloud Test Server -->
+                      <tr>
+                        <td align="center"><code>NODE-02</code></td>
+                        <td>Database Test Cluster (MySQL)</td>
+                        <td align="center">4 vCPUs</td>
+                        <td align="center">2.80 Ghz</td>
+                        <td align="center">8 GB ECC</td>
+                        <td align="center">12 GB</td>
+                        <td>Ubantu 24.04 LTS</td>
+                     </tr>
+
+                     <!-- Production Web Host-->
+                     <tr>
+                        <td align="center"><code>NODE-03</code></td>
+                        <td>Web Edge Gateway (Revers Proxy)</td>
+                        <td align="center">2 vCPUs</td>
+                        <td align="center">2.50 Ghz</td>
+                        <td align="center">4 GB DDR4</td>
+                        <td align="center">64 GB</td>
+                        <td>Debin GNU/Linux 12</td>
+                     </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr bgcolor="#f6f8fa">
+                        <th scope="row" colspan="2" align="right">Totalluster Capacity:</th>
+                        <td align="center"><strong>14 Cores</strong></td>
+                        <td align="center">-</td>
+                        <td align="center"><strong>28 GB RAM</strong></td>
+                        <td align="center"><strong>704 GB SSD</strong></td>
+                        <td align="center">3 Active Nodes</td>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </main>
+
+        <hr>
+
+        <footer>
+            <p?><small>&copy; 2026 Yashpal Singh • Technical Specification Data Grid</small></p>
+        </footer>
+        
+    </body>
+</html>
