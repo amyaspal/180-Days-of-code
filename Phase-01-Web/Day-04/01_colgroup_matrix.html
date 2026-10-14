@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="refresh" content="3">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width", initial-scale=1.0>
+        <title>Day 4: Colum Grouping Architecture | Yashpal Singh</title>
+    </head>
+    <body>
+
+        <header>
+            <h1>Software engineering Project Resource &amp; Budget Matrix</h1>
+            <p>Demonstrating vertical colum grouoing with <code>&lt;colgroup&gt;</code>, colum spanning, and accessible table headers.</p>
+        </header>
+
+        <hr>
+
+        <main>
+            <table border="1" cellpadding="10" cellspacing="0" width="100%">
+                <caption><strong>180-Day Engineering Development Cost &amp; Hour Distribution</strong></caption>
+
+                <!-- Column Groups for Instant Vertical Formatting -->
+                <colgroup>
+                    <col style="background-color: #f6f8fa; width: 25%;"><!-- Module Column -->
+                    <col style="width: 15%;"> <!-- Hours -->
+                    <col span="2" style="background-color: #f6f8fa; width: 30%;"> <!-- Cost Breakdown (2 cols) -->
+                    <col style="background-color: #f0fff4; width: 15%;"> <!-- Status Column -->
+                </colgroup>
+
+                <thead>
+                    <tr bgcolor="0d1117" style="color: #ffffff;">
+                        <th scope="col">Curriculm Module</th>
+                        <th scope="col">Estimated Hours</th>
+                        <th scope="col">Direct Sever Cost (₹)</th>
+                        <th scope="col">Tooling Cost (₹)</th>
+                        <th scope="col">Deployment State</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th scope="row" align="left">Phase 1: Web Fronted &amp; JS</th>
+                        <td align="center">75 hrs</td>
+                        <td align="right">0.00</td>
+                        <td align="right">0.00</td>
+                        <td align="center"><strong>ACTIVE</strong></td>
+                    </tr>
+                    <tr>
+                        <th scope="row" align="left">Phase 2: C Programing &amp; Memory</th>
+                        <td align="center">75 hrs</td>
+                        <td align="right">0.00</td>
+                        <td align="right">0.00</td>
+                        <td align="center">PLANNED</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" align="left">Phase 3: C++ &amp; DSA Algotithm</th>
+                        <td align="center">75 hrs</td>
+                        <td align="right">0.00</td>
+                        <td align="right">0.00</td>
+                        <td align="center">PLANNED</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" align="left">Phase 4: Core Java &amp; OOPs</th>
+                        <td align="center">75 hrs</td>
+                        <td align="right">0.00</td>
+                        <td align="right">0.00</td>
+                        <td align="center">PLANNED</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" align="left">Phase 5: DBMS, SQL &amp; PHP</th>
+                        <td align="center">75 hrs</td>
+                        <td align="right">1,200.00</td>
+                        <td align="right">500.00</td>
+                        <td align="center">PLANNED</td>
+                    </tr>
+                    <tr>
+                        <th scope="row" align="left">Phase 6: Major Capstone Project</th>
+                        <td align="center">80 hrs</td>
+                        <td align="right">2,500.00</td>
+                        <td align="right">1,000.00</td>
+                        <td align="center">CAPSTONE</td>
+                    </tr>
+                </tbody>
+
+                <tfoot>
+                    <tr bgcolor="ddf4ff">
+                        <th scope="row" align="left">Total Engineering Commitment:</th>
+                        <td align="center"><strong>460 hrs</strong></td>
+                        <td align="right"><strong>₹ 3,700.00</strong></td>
+                        <td align="right"><strong>₹ 1,500.00</strong></td>
+                        <td align="center"><strong>ESTIMATE</strong></td>
+                    </tr>
+                </tfoot>
+
+            </table>
+        </main>
+
+        <hr>
+
+        <footer>
+            <p><small>&copy; 2026 Yashpal Singh • Day 4 Colgroup Architecture</small></p>
+        </footer>
+    </body>
+</html>
