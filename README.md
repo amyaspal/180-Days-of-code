@@ -9,7 +9,7 @@
 
 ## 📊 180-Day Phase Tracker
 
-- [ ] **Phase 1: Web Frontend & JavaScript (Days 1–30)** `[ 3 / 30 Days Completed ]` ⏳ In Progress
+- [ ] **Phase 1: Web Frontend & JavaScript (Days 1–30)** `[ 4 / 30 Days Completed ]` ⏳ In Progress
 - [ ] **Phase 2: C Programming & Low-Level Memory (Days 31–60)** `[ 0 / 30 Days ]`
 - [ ] **Phase 3: C++ & Data Structures and Algorithms (Days 61–90)** `[ 0 / 30 Days ]`
 - [ ] **Phase 4: Core Java & OOPs Architecture (Days 91–120)** `[ 0 / 30 Days ]`
@@ -30,9 +30,8 @@
 - [x] **Day 03 (Completed ✅):** [Multimedia, SVG & Link Protocols](./Phase-01-Web/Day-03/)
   - *Labs:* Responsive `<picture>` art direction, native video/audio streaming, vector SVG coding, and in-page jump anchors.
 
-- [ ] **Day 04 (Current ⏳):** [Advanced Data Grids, `<colgroup>` & Technical Spec Sheets](./Phase-01-Web/Day-04/)
-  - *Focus:* Enterprise data tables, column grouping (`<colgroup>`, `<col>`), table accessibility (`scope="col/row"`), and complex system specification sheets.
+- [x] **Day 04 (Completed ✅):** [Advanced Data Grids, `<colgroup>` & Technical Spec Sheets](./Phase-01-Web/Day-04/)
+  - *Labs:* Enterprise data tables, column grouping (`<colgroup>`, `<col>`), table accessibility (`scope="col/row"`), and complex hardware/server specification grids.
 
-- [ ] **Day 05:** Advanced Inputs, Datalist & Native Dialog Modals
-- [ ] **Day 06:** Complete Week 1 Capstone: Student Admission & Academic Portal
-- [ ] **Day 07:** Week 1 Review, Git Tagging & Live GitHub Pages Deployment
+- [ ] **Day 05 (Current ⏳):** [HTML5 Advanced Inputs, Datalist & Interactive Dialog Modals](./Phase-01-Web/Day-05/)
+  - *Focus:* `<datalist>` autocomplete, range sliders, color pickers, and native HTML5 `<dialog>` modal popups.
