@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 05 - Advanced Html5 Inputes, Datalist & Gauges</title>
+        <style>
+            :root {
+                --bg-color: #0f172a;
+                --card-bg: #1e293b;
+                --border-color: #334155;
+                --accent-color: #38bdf8;
+                --text-main: #f8fafc;
+                --text-muted: #94a3b8;
+            }
+
+            body {
+                font-family: 'segoe UI', system-ui, sans-sarif;
+                background-color: var(--bg-color);
+                color: var(--text-color);
+                margin: 0;
+                padding: 2rem 1rem;
+                display: flex;
+                justify-content: center;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 800px;
+                background: var(--card-bg);
+                padding: 2.5rem;
+                border-radius: 12px;
+                border: 1px solid var(--border-color);
+                box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+            }
+
+            header h1 {
+                margin-top: 0;
+                color: var(--accent-color);
+                font-size: 1.75rem;
+            }
+
+            header p {
+                color: var(--text-muted);
+                margin-bottom: 2rem;
+                font-size: 0.95rem;
+            }
+
+            fieldset {
+                color: var(--border-color);
+                border-radius: 8px0;
+                padding: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            legend {
+                color: var(--accent-color);
+                font-weight: 600;
+                padding: 0 0.5rem;
+            }
+
+            .formt-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280, 1fr));
+                gap: 1.25rem;
+            }
+
+            form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            label {
+                font-size: 0.9rem;
+                color: var(--text-main);
+                font-weight: 500;
+            }
+
+            input[type="text"],
+            input[type="search"],
+            input[type="url"],
+            input[type="tel"],
+            input[type="file"],
+            select {
+                background-color: #0f172a;
+                border: 1px solid var(--border-color);
+                color: var(--text-main);
+                padding: 0.65rem 0.85rem;
+                border-radius: 6px;
+                font-size: 0.95rem;
+            }
+
+            input:focus {
+                outline: 2px solid var(--accent-color);
+                border-color: transparent;
+            }
+
+            .solider-weapper {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            input[type="range"] {
+                flex: 1;
+                accent-color: var(--accent-color);
+                cursor: pointer;
+            }
+
+            output {
+                font-family: monospace;
+                background-color: #0f172a;
+                padding: 0.25rem 0.6rem;
+                border-radius: 4px;
+                border: 1px solid var(--border-color);
+                min-width: 50px;
+                text-align: center;
+                color: var(--accent-color0);
+            }
+
+            .color-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            input[type="color"] {
+                border: none;
+                width: 50px;
+                height: 40px;
+                border-radius: 6px;
+                cursor: pointer;
+                background: none;
+            }
+
+            .gauge-item {
+                margin-bottom: 1rem;
+            }
+
+            progress, meter {
+                width: 100%;
+                height: 18px;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+
+            .submit-btn {
+                background-color: var(--accent-color);
+                color: #0f172a;
+                font-weight: 600;
+                padding: 0.75rem 1.5rem;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: opacity 0.2s;
+            }
+
+            .submit-btn:hover {
+                opacity: 0.9;
+            }
+        </style>
+    </head>
+    <body>
+        <main class="container">
+            <header>
+                <h1>RMPU University - Student Skill & Scholarship Portel</h1>
+                <p>Deminstrating modern HTML5 Form input, datalist autocomplete, dynamic output, and native gauges.</p>
+            </header>
+
+            <form action="#" method="POST" oninput="freeOut.value = '$' + freeRange.value; semMarksOut.value = marksRange.value + '%'">
+                
+                <!-- Fieldset 1: Datalist Autocomplete -->
+                 <fieldset>
+                    <legend>1. Course & Specialization (Datalistc Autocomplete)</legend>
+                    <div class="form-grid">
+                        <div class="from-group">
+                            <label for="campusCourse">Enrolled Coursec(Type to search)</label>
+                            <input type="text" id="campusCourse" name="course" list="courseList" placeholder="e.g. BCA, MCA..." required autocomplete="off">
+                            <datalist id="coursesList">
+                                <option value="BCA - Bachelor of Computer Application"></option>
+                                <option value="MCA - Master of Computer Application"></option>
+                                <option value="B. Sc Computer Science"></option>
+                                <option value="M. Sc Information technology"></option>
+                                <option value="B. Tech Computer Science Engineering"></option>
+                            </datalist>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="specialization">Primary Programming Track:</label>
+                            <input type="search" id="specialization" name="specialization" list="techSkills" placeholder="Search: C, C++, Java, Web...">
+                            <datalist>
+                                <option value="C & Low-Level Memory Management"></option>
+                                <option value="C++ & Data Structures & Algorithms"></option>
+                                <option value="Core Java  & OOPs Architecture"></option>
+                                <option value="Full-Stack Web (HTML, CSS, Js,PHP)"></option>
+                                <option value="Relational Database & SQL (MySQL)"></option>
+                            </datalist>
+                        </div>
+                    </div>
+                 </fieldset>
+
+                 <!-- Fieldset 2: Range Sliders with Output -->
+                  <fieldset>
+                    <legend>2. LIve Range & Output Binding (Range & Output Element)</legend>
+                    <div class="form-grid">
+                        <div class="from-group">
+                            <label for="marksRange">Previous Semester Aggregate (%):</label>
+                            <div>
+                                <input type="range" id="marksRange" name="marksRange" min="40" max="100" value="85" step="1">
+                                <output id="semMarksOut" for="marksRange">85%</output>
+                            </div>
+                        </div>
+
+                        <div class="for-group">
+                            <label for="feeRange">Annual Scholarship / Budget Cap:</label>
+                            <div class="slider-wrapper">
+                                <input type="range" id="feeRange" name="feeRange" min="500" max="5000" value="1500" step="100">
+                                <output id="feeOut" for="feeRange">$1500</output>
+                            </div>
+                        </div>
+                    </div>
+                  </fieldset>
+
+                  <!-- Fieldset 3: Color, URL, Tel, File -->
+                   <fieldset>
+                    <legend>3. Multi-Type Form Controls (Color, Phone, URL, & File)</legend>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="studentTheme">Badge Theme Accent Color:</label>
+                            <div class="color-wrapper">
+                                <input type="color" id="studentTheme" name="themeColor" value="#38bdf8">
+                                <span style="font-size: 0.85rem; color: var(--text-muted);">Pick card color</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="githubUrl">GitHub Portfolio Profile (URL):</label>
+                            <input type="url" id="githubUrl" name="githubProfile" placeholder="https://github.com/amyaspal" pattern="https://.*" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="studentPhone">Contact Number (10 Digits):</label>
+                            <input type="tel" id="studentPhone" name="phone" placeholder="9876543210" pattern="[0-9]{10}"" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="githubUrl">Upload Marksheet (PDF or Image):</label>
+                            <input type="file" id="marksheetDoc" name="document" accept=".pdf,image/png,image/jpeg">
+                        </div>
+                    </div>
+                   </fieldset>
+                   
+                   <!-- Fieldset 4. native Progress & Meter -->
+                   <fieldset>
+                     <legend>4. Native HTML5 Metrics (Progress & Meter)</legend>
+                     <div class="gauge-item">
+                        <label for="profileProgress">180 Days Mastery Roadmap Progress (Day 5/180):</label>
+                        <progress id="profileProgress" value="5" max="180">2.7%</progress>
+                     </div>
+
+                     <div class="gauge-itme">
+                        <label for="attendanceMeter">University Attendance Metric (Threshold Gauge):</label>
+                        <meter id="attendanceMeter" min="0" max="100" law="75" high="90" optimum="95" value="88">88%</meter>
+                        <small style="color: var(--text-muted); display: block; margin-top: 0.25rem;">
+                            Minimum 75% required (Low: 75, High: 90, Current: 88%)
+                        </small>
+                     </div>
+                   </fieldset>
+
+                   <button type="submit" class="submit-btn">Verify Application Data</button>
+            </form>
+        </main>
+    </body>
+</html>
