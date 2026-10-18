@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 6 - JavaScript Constraint Validation API</title>
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --surface: #1e293b;
+            --border: #334155;
+            --primary: #38bdf8;
+            --error: #ef4444;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 2.5rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            max-width: 720px;
+            width: 100%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.6rem;
+        }
+
+        p {
+            color: var(--muted);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        input {
+            background-color: #0f172a;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.75rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        input:focus {
+            outline: 2px solid var(--primary);
+        }
+
+        .field-feedback {
+            font-size: 0.82rem;
+            min-height: 1.2rem;
+            color: var(--error);
+            font-weight: 500;
+        }
+
+        .diagnostics-panel {
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-top: 1.5rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+        }
+
+        .diagnostics-title {
+            color: var(--primary);
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .diag-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.4rem;
+        }
+
+        .diag-item {
+            color: var(--muted);
+        }
+
+        .diag-item span {
+            color: var(--text);
+            font-weight: bold;
+        }
+
+        button {
+            background-color: var(--primary);
+            color: #0b0f19;
+            font-weight: 700;
+            padding: 0.8rem 1.6rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+<main class="card">
+    <h1>Constraint Validation API & Live Diagnostics</h1>
+    <p>Using <code>element.validity</code>, <code>checkValidity()</code>, and <code>setCustomValidity()</code> to control validation completely in JavaScript.</p>
+
+    <form id="admissionForm" novalidate>
+
+        <!-- Field 1: Candidate name-->
+        <div class="form-row">
+            <label for="fullName">Candidate Full Name (Min 3 cheracters):</label>
+            <input type="text" id="fullName" name="fullName" required minlength="3">
+            <div id="nameError" class="field-feeedback" aria-live="polite"></div>
+        </div>
+
+        <!-- Feild 2: Age Verificantion -->
+         <div class="form-row">
+            <label for="candidateAge">Applicant Age (Allowed: 17 to 35):</label>
+            <input type="number" id="candidateAge" name="candidateAge" min="17" max="35" required>
+            <div id="ageError" class="field-feeedback" aria-live="polite"></div>
+        </div>
+
+        <!-- Feild 3: Project Repositry URl -->
+         <div class="form-row">
+            <label for="projectUrl">Portfolio / Github Project Link:</label>
+            <input type="text" id="projectUrl" name="projectUrl" placeholder="https://github.com/..." required>
+            <div id="urlError" class="field-feeedback" aria-live="polite"></div>
+        </div>
+
+        <button type="submit">Submit & Validate Application</button>
+    </form>
+
+    <!-- Real-time Validity Diagnostics Box -->
+     <div class="diagnostics-panel">
+        <div class="diagnostatics-title">Real-Time Validate Diagnostatics (Active Element):</div>
+        <div class="diag-grid">
+            <div class="diag-item">valueMissing: <span id="diagMissing">false</span></div>
+            <div class="diag-item">typeMismatch: <span id="diagType">false</span></div>
+            <div class="diag-item">tooShort: <span id="diagShort">false</span></div>
+            <div class="diag-item">rangeUnderflow: <span id="diagUnder">false</span></div>
+            <div class="diag-item">rangeOverflow: <span id="diagOver">false</span></div>
+            <div class="diag-item">valid: <span id="diagValid">true</span></div>
+        </div>
+     </div>
+</main>
+
+<script>
+    const form = document.getElementById('addmissionForm');
+    const fullName = document.getElementById('fullName');
+    const candidateAge = document.getElementById('candidateAge');
+    const projectUrl = document.getElementById('projectUrl');
+
+    const nameError = document.getElementById('nameError');
+    const ageError = document.getElementById('ageError');
+    const urlError = document.getElementById('urlError');
+
+    // Diagnostic display nodes
+    const diagMissing = document.getElementById('diagMissing');
+    const diagType = document.getElementById('diagType');
+    const diagShort = document.getElementById('diagShort');
+    const diagUnder = document.getElementById('diagUnder');
+    const diadOver = document.getElementById('diadOver');
+    const diagValid = document.getElementById('diagValid');
+
+    function updateDiagnostics(element) {
+        const v = element.validity;
+        diagMissing.textContent = v.valueMessing;
+        diagType.textContent = v.typeMismatch;
+        diagShort.textContent = v.tooShort;
+        diagUnder.textContent = v.rangeUnderflow;
+        diagOver.textContent = v.rangeOverflow;
+        diagValid.textContent = v.valid;
+
+        diagValid.style.color = v.valid ? "var(--primary)" : "var(--error)";
+    }
+
+    function validateField(field, errorNode) {
+        updateDiagnostics(field);
+
+        // Reset custom validity first
+        field.setCustomValidity("");
+
+        if (field.validity.valueMissing) {
+            field.setCustomValidity("This field is mandatory. Please enter a value.");
+            errorNode.textContent = field.validationMessage;
+            return false;
+        }
+
+        if (field.validity.tooShort) {
+            field.setCustomValidity(`Too short! Please provide at least ${field.minLength} characters.`);
+            errorNode.textContent = field.validationMessage;
+            return false;
+        }
+
+        if (field.validity.rangeUnderflow || field.validity.rangeOverflow) {
+            field.setCustomValidity(`Age must strictly be between ${field.min} and ${field.max} years.`);
+            errorNode.textContent = field.validationMessage;
+            return false;
+        }
+
+        if (field.validity.typeMismatch) {
+            field.setCustomValidity("Please enter a valid full URL starting with https://");
+            errorNode.textContent = field.validationMessage;
+            return false;
+        }
+
+        errorNode.textContent = "";
+        return true;
+    }
+
+    // Attach real-time input listeners
+    [fullName, candidateAge, projectUrl].forEach(input => {
+        input.addEventListener('input', () => {
+            const errorElement = document.getElementById(input.id + 'Error');
+            validateField(input, errorElement);
+        });
+
+        input.addEventListener('focus', () => {
+            updateDiagnostics(input);
+        });
+    });
+
+    // Form Submit Event
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const isNameValid = validateField(fullName, nameError);
+        const isAgeValid = validateField(candidateAge, ageError);
+        const isUrlValid = validateField(projectUrl, urlError);
+
+        if (isNameValid && isAgeValid && isUrlValid) {
+            alert("Success! All form constraints verified via Constraint Validation API.");
+            form.reset();
+        } else {
+            console.warn("Validation failed. Check invalid fields.");
+        }
+    });
+</script>
+</body>
+</html>

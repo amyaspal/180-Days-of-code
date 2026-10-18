@@ -9,7 +9,7 @@
 
 ## 📊 180-Day Phase Tracker
 
-- [ ] **Phase 1: Web Frontend & JavaScript (Days 1–30)** `[ 4 / 30 Days Completed ]` ⏳ In Progress
+- [ ] **Phase 1: Web Frontend & JavaScript (Days 1–30)** `[ 6 / 30 Days Completed ]` ⏳ In Progress
 - [ ] **Phase 2: C Programming & Low-Level Memory (Days 31–60)** `[ 0 / 30 Days ]`
 - [ ] **Phase 3: C++ & Data Structures and Algorithms (Days 61–90)** `[ 0 / 30 Days ]`
 - [ ] **Phase 4: Core Java & OOPs Architecture (Days 91–120)** `[ 0 / 30 Days ]`
@@ -33,5 +33,11 @@
 - [x] **Day 04 (Completed ✅):** [Advanced Data Grids, `<colgroup>` & Technical Spec Sheets](./Phase-01-Web/Day-04/)
   - *Labs:* Enterprise data tables, column grouping (`<colgroup>`, `<col>`), table accessibility (`scope="col/row"`), and complex hardware/server specification grids.
 
-- [ ] **Day 05 (Current ⏳):** [HTML5 Advanced Inputs, Datalist & Interactive Dialog Modals](./Phase-01-Web/Day-05/)
-  - *Focus:* `<datalist>` autocomplete, range sliders, color pickers, and native HTML5 `<dialog>` modal popups.
+- [x] **Day 05 (Completed ✅):** [HTML5 Advanced Inputs, Datalist & Interactive Dialog Modals](./Phase-01-Web/Day-05/)
+  - *Labs:* HTML5 `<datalist>` autocomplete engine, dynamic range sliders tied to `<output>`, color/date/tel pickers, `<meter>` and `<progress>` status gauges, native `<dialog>` modals with `showModal()`, `::backdrop` styling, and form `method="dialog"`.
+
+- [x] **Day 06 (Completed ✅):** [Form Validation Architecture & Constraint Validation API](./Phase-01-Web/Day-06/)
+  - *Labs:* Native HTML5 form constraints, RegEx patterns (`pattern="..."`), real-time JavaScript Constraint Validation API (`validity.valueMissing`, `validity.patternMismatch`), and custom error messaging with `setCustomValidity()`.
+
+- [ ] **Day 07 (Current ⏳):** [Week 1 Capstone Project & Git Milestone — Student Academic Portal](./Phase-01-Web/Day-07/)
+  - *Focus:* Semantic HTML5, accessible marksheets, feedback and registration forms with validation constraints, multimedia integration, and full Git repository milestone tagging.

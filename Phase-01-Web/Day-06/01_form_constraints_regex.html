@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 06 - Form Constraints & RegEx Patterns</title>
+        <style>
+            :root {
+             --bg-color: #0b0f19;
+            --surface-color: #1e293b;
+            --border-color: #334155;
+            --primary-color: #38bdf8;
+            --success-color: #22c55e;
+            --error-color: #ef4444;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            }
+
+            body {
+                font-family: 'Segoe UI', system-ui, sans-sarif;
+                background-color: var(--bg-color);
+                color: var(--text-main);
+                margin: 0;
+                padding: 2.5rem 1rem;
+                display: flex;
+                justify-content: center;
+            }
+
+            .container {
+                width: 100%;
+                max-width: 760px;
+                background-color: var(--surface-color);
+                padding: 2.5rem;
+                border-radius: 12px;
+                border: 1px solid var(--border-color);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            }
+
+            header h1 {
+                color: var(--primary-color);
+                margin-top: 0;
+                font-size: 1.7rem;
+            }
+
+            header p {
+                color: var(--text-muted);
+                margin-bottom: 2rem;
+                font-size: 0.95rem;
+                line-height: 1.5;
+            }
+
+            fieldset {
+                border: 1px solid var(--border-color);
+                border-radius: 8px;
+                padding: 1.5rem;
+                margin-bottom: 1.75rem;
+            }
+
+            legend {
+                color: var(--primary-color);
+                font-weight: 600;
+                padding: 0 0.5rem;
+            }
+
+            .form-group {
+                display: flex;
+                flex-direction: column;
+                gap: 0.4rem;
+                margin-bottom: 1.25rem;
+                position: relative;
+            }
+
+            label {
+                font-size: 0.9rem;
+                font-weight: 500;
+            }
+
+            .hint {
+                font-size: 0.78rem;
+                color: var(--text-muted);
+            }
+
+            input[type="text"]
+            input[type="email"]
+            input[type="password"] {
+                background-color: #0f172a;
+                border: 1px solid var(--border-color);
+                color: var(--text-main);
+                padding: 0.75rem 0.9rem;
+                border-radius: 6px;
+                font-size: 0.95rem;
+                transition: all 0.2s ease;
+            }
+
+            /* Modern CSS Validation Status */
+            input.focus {
+                outline: 2px solid var(--primary-color);
+                border-color: transparent;
+            }
+
+            /* Highlight invalide field onnly after user interacts with it */
+            input:user-invalid {
+                border-color: var(--error-color);
+                background-color: rgba(239, 68, 8, 0.08);
+            }
+
+            input:user-valid {
+                border-color: var(--success-color);
+                background-color: rgba(34, 197, 94, 0.08);
+            }
+
+            .error-message {
+                display: none;
+                font-size: 0.8rem;
+                color: var(--error-color);
+                margin-top: 0.2rem;
+            }
+
+            input:user-invalid + .error-message {
+                display: block;
+            }
+
+            .btn-submit {
+                background-color: var(--primary-color);
+                color: #0b0f19;
+                font-weight: 700;
+                padding: 0.85rem 1.8rem;
+                border: none;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: opacity 0.2s ease;
+            }
+
+            .btn-submit:hover {
+                opacity: 0.9;
+            }
+        </style>        
+    </head>
+    <body>
+
+        <main class="container">
+            <header>
+                <h1> RMPU University Examination Enrollment</h1>
+                <p>Demonstrating steict HTML5 client-side form constraints, regular expression (RegEx), and modern CSS <code>:user-invalide</code> pseudo-classes.</p>
+            </header>
+
+            <form action="#" method="POST" novalidate>
+
+                <fieldset>
+                    <legend>Student Identity Verification</legend>
+
+                    <!-- Roll Number :Exact Universituy Pattern (e.g. RMPU20241085) -->
+                     <div class="form-group">
+                        <label for="rollNumber">University Roll Number (Format:Rmpu + 8 Digits):</label>
+                        <input type="text" id="rollNumber" name="rollNumber" placeholder="e.g.RMPU20241085" pattern="^RMPU[0-9]{8}" required autocomplete="off">
+                        <span class="hint">Must start wuth 'RMPU' followed by exactly 8 digits.</span>
+                        <span class="error-message">Invalide Roll Number Format. Use RMPU followed by 8 numbers.</span>
+                     </div>
+
+                     <!-- Acadmic Email -->
+                      <div class="form-group">
+                        <label for="studentEmaoil">Official University / Personal Email:</label>
+                        <input type="email" id="studentEmail" name="studentEmail" placeholder="student@rmpu.edu.ac.in" required>
+                        <span class="hint">Standard RFC-compliant email address requires</span>
+                        <span class="error-message">Pleasecenter a valid email address.</span>
+                      </div>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Portal Security Credentials</legend>
+
+                    <!-- Strong Password: At least 8 chars, 1 uppercase, 1 lowercase, 1 number, 1special char -->
+                     <div class="form-group">
+                        <label for="portalPassword">Create Master Password:</label>
+                        <input type="password" id="portalPassword" name="portalPassword" minlength="8" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}" required>
+                        <span class="hint">Minimum 8 characters: at least 1 uppercase letter, 1 lowercase letter, 1 number, and 1 special symbol (!@#$%^&*).</span>
+                        <span class="error-message">Password does not meet complexity requirements.</span>
+                     </div>
+
+                     <!-- PIN Code: 6 Digits -->
+                      <div class="form-group">
+                        <label for="postalPin">District Postal PIN Code (6 Digits):</label>
+                        <input type="text" id="postalPin" name="postalPin" placeholder="e.g. 202001" pattern="^[1-9][0-9]{5}$" maxlength="6" required>
+                        <span class="hint">Indian Postal PIN code cannot start with 0.</span>
+                        <span class="error-message">Must be a valid 6-digit Indian PIN code.</span>
+                      </div>
+                </fieldset>
+
+                <button type="submit" class="btn-submit">Submit Registration</button>
+            </form>
+        </main>
+    </body>
+</html>
