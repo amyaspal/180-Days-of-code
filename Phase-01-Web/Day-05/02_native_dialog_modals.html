@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 05 - Native HTML5 Dialog & Modal System</title>
+    <style>
+        :root {
+            --bg: #0b0f19;
+            --surface: #1e293b;
+            --border: #334155;
+            --primary: #38bdf8;
+            --danger: #f43f5e;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 3rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-top: 0;
+            font-size: 1.6rem;
+        }
+
+        p {
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        button {
+            padding: 0.75rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: #0b0f19;
+        }
+
+        .btn-secondary {
+            background-color: #334155;
+            color: var(--text);
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        /* ---------------- Native Dialog Styling ---------------- */
+        dialog {
+            background-color: #1e293b;
+            color: var(--text);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+        }
+
+        /* Dialog Backdrop (Blurs and darkens background when opened) */
+        dialog::backdrop {
+            background: rgba(11, 15, 25, 0.75);
+            backdrop-filter: blur(4px);
+        }
+
+        dialog h2 {
+            margin-top: 0;
+            color: var(--primary);
+            font-size: 1.35rem;
+        }
+
+        dialog ul {
+            text-align: left;
+            color: var(--muted);
+            padding-left: 1.2rem;
+            line-height: 1.5;
+            margin: 1.25rem 0;
+        }
+
+        .dialog-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        .result-box {
+            margin-top: 1.5rem;
+            padding: 0.75rem;
+            background: #0f172a;
+            border-radius: 6px;
+            font-family: monospace;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+<main class="card">
+    <h1>HTML5 Native Modal Architecture</h1>
+    <p>
+        Without relying on Bootstrap or external libraries, HTML5 modern <code>&lt;dialog&gt;</code> 
+        provides out-of-the-box accessibility, backdrop styling, and keyboard <strong>ESC</strong> dismissal.
+    </p>
+
+    <div class="btn-group">
+        <button id="openTermsBtn" class="btn-primary">View Terms Modal</button>
+        <button id="openDeleteBtn" class="btn-danger">Delete Draft Record</button>
+    </div>
+
+    <div class="result-box" id="modalStatus">Dialog Status: Idle</div>
+</main>
+
+<!-- Dialog 1: Terms and Conditions with Form method="dialog" -->
+<dialog id="termsModal">
+    <h2>180-Days Coding Roadmap — Code of Conduct</h2>
+    <p>Please review and agree to the engineering guidelines before proceeding:</p>
+    <ul>
+        <li>Commit 2 to 2.5 hours daily for intensive hands-on development.</li>
+        <li>Push only tested and verified code commits to GitHub.</li>
+        <li>Focus on CLI terminal mastery and low-level computer science concepts.</li>
+    </ul>
+
+    <!-- Notice method="dialog": No custom JavaScript is required to close this form! -->
+    <form method="dialog" class="dialog-actions">
+        <button value="cancelled" class="btn-secondary">Decline</button>
+        <button value="accepted" class="btn-primary">Accept & Continue</button>
+    </form>
+</dialog>
+
+<!-- Dialog 2: Critical Confirmation with JS close() -->
+<dialog id="deleteModal">
+    <h2>Confirmation Required</h2>
+    <p>Are you sure you want to delete your draft record? This action cannot be undone.</p>
+    <div class="dialog-actions">
+        <button id="cancelDeleteBtn" class="btn-secondary">Cancel</button>
+        <button id="confirmDeleteBtn" class="btn-danger">Yes, Delete</button>
+    </div>
+</dialog>
+
+<script>
+    const termsModal = document.getElementById('termsModal');
+    const deleteModal = document.getElementById('deleteModal');
+    const openTermsBtn = document.getElementById('openTermsBtn');
+    const openDeleteBtn = document.getElementById('openDeleteBtn');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    const statusText = document.getElementById('modalStatus');
+
+    // 1. Open Terms Modal using native .showModal()
+    openTermsBtn.addEventListener('click', () => {
+        termsModal.showModal();
+        statusText.textContent = "Dialog Status: Terms Modal is open";
+    });
+
+    // Handle closing via the native form method="dialog"
+    termsModal.addEventListener('close', () => {
+        statusText.textContent = `Dialog Status: Closed with value (${termsModal.returnValue})`;
+    });
+
+    // 2. Open Delete Modal
+    openDeleteBtn.addEventListener('click', () => {
+        deleteModal.showModal();
+        statusText.textContent = "Dialog Status: Delete confirmation dialog is open";
+    });
+
+    // Explicitly close using .close()
+    cancelDeleteBtn.addEventListener('click', () => {
+        deleteModal.close();
+        statusText.textContent = "Dialog Status: Action cancelled";
+    });
+
+    confirmDeleteBtn.addEventListener('click', () => {
+        deleteModal.close();
+        statusText.textContent = "Dialog Status: Record successfully deleted";
+    });
+
+    // Close when clicking directly on the backdrop (outside dialog)
+    [termsModal, deleteModal].forEach(dialog => {
+        dialog.addEventListener('click', (e) => {
+            const rect = dialog.getBoundingClientRect();
+            const isInDialog = (rect.top <= e.clientY && e.clientY <= rect.top + rect.height
+              && rect.left <= e.clientX && e.clientX <= rect.left + rect.width);
+            if (!isInDialog) {
+                dialog.close();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
